@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/components/sans.dart';
-import 'package:flutter_portfolio/components/sans_bold.dart';
+import 'package:flutter_portfolio/components/skill_capsule.dart';
 import 'package:flutter_portfolio/components/tabs_web.dart';
 
 class LandingPageWeb extends StatefulWidget {
@@ -14,7 +14,9 @@ class _LandingPageWebState extends State<LandingPageWeb> {
   @override
   Widget build(BuildContext context) {
     var heightDevice = MediaQuery.of(context).size.height;
+    var widthDevice = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.white,
       drawer: Drawer(),
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -66,15 +68,16 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                         vertical: 10,
                         horizontal: 20,
                       ),
-                      child: SansBold(
+                      child: Sans(
                         text: "Hello I'm",
                         size: 15,
+                        isBold: true,
                       ),
                     ),
                     SizedBox(
                       height: 15,
                     ),
-                    SansBold(text: "Joaquin Beltran", size: 55),
+                    Sans(text: "Joaquin Beltran", size: 55, isBold: true),
                     Sans(text: "Flutter Developer", size: 30),
                     SizedBox(
                       height: 15,
@@ -132,6 +135,65 @@ class _LandingPageWebState extends State<LandingPageWeb> {
               ],
             ),
           ),
+          // Second Section
+          Container(
+            height: heightDevice / 1.5,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "imgs/portfolio/web.jpg",
+                  width: widthDevice / 2.5,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Sans(
+                      text: "About Me",
+                      size: 40,
+                      isBold: true,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Sans(
+                      text:
+                          "I like making challenging funny code. I love creating mobile and web solutions.",
+                      size: 15,
+                      width: widthDevice / 2,
+                    ),
+                    Sans(
+                      text:
+                          "I specialize in Flutter Development providing solutions with a single codebase for multiple platforms such as Android, iOS, Huawei, Web, Mac and Windows.",
+                      size: 15,
+                      width: widthDevice / 2,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      width: widthDevice / 2,
+                      child: Wrap(
+                        spacing: 10,
+                        runSpacing: 10,
+                        children: [
+                          SkillCapsule(text: 'Flutter'),
+                          SkillCapsule(text: 'Firebase'),
+                          SkillCapsule(text: 'Supabase'),
+                          SkillCapsule(text: 'MongoDB'),
+                          SkillCapsule(text: 'Git'),
+                          SkillCapsule(text: 'MySQL'),
+                          SkillCapsule(text: 'NodeJS'),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

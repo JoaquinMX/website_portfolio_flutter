@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
-        if (constraints.maxWidth > 800) {
+        if (constraints.maxWidth > 768) {
           return const LandingPageWeb();
         } else {
           return const LandingPageMobile();
