@@ -17,15 +17,15 @@ class _LandingPageWebState extends State<LandingPageWeb> {
     var widthDevice = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: Drawer(),
+      drawer: const Drawer(),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.black,
           size: 25,
         ),
-        title: Row(
+        title: const Row(
           children: [
             Spacer(
               flex: 3,
@@ -46,7 +46,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
       body: ListView(
         children: [
           // First Section
-          Container(
+          SizedBox(
             height: heightDevice - 56, // 56 is the height of the app bar
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -56,7 +56,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.tealAccent,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
@@ -64,7 +64,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                           bottomRight: Radius.circular(20),
                         ),
                       ),
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         vertical: 10,
                         horizontal: 20,
                       ),
@@ -74,42 +74,42 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                         isBold: true,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Sans(text: "Joaquin Beltran", size: 55, isBold: true),
                     Sans(text: "Flutter Developer", size: 30),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.email),
-                        SizedBox(
+                        const Icon(Icons.email),
+                        const SizedBox(
                           width: 20,
                         ),
                         Sans(text: "contact@joaquinmx.com", size: 15),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.call),
-                        SizedBox(
+                        const Icon(Icons.call),
+                        const SizedBox(
                           width: 20,
                         ),
                         Sans(text: "+52 555 555 555", size: 15),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.location_pin),
-                        SizedBox(
+                        const Icon(Icons.location_pin),
+                        const SizedBox(
                           width: 20,
                         ),
                         Sans(text: "North America", size: 15),
@@ -136,7 +136,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
             ),
           ),
           // Second Section
-          Container(
+          SizedBox(
             height: heightDevice / 1.5,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -155,7 +155,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                       size: 40,
                       isBold: true,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Sans(
@@ -170,12 +170,12 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                       size: 15,
                       width: widthDevice / 2,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     SizedBox(
                       width: widthDevice / 2,
-                      child: Wrap(
+                      child: const Wrap(
                         spacing: 10,
                         runSpacing: 10,
                         children: [
@@ -193,7 +193,128 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                 ),
               ],
             ),
-          )
+          ),
+          // Third Section
+          SizedBox(
+              height: heightDevice / 1.3,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Sans(
+                    text: "What I do",
+                    size: 40,
+                    isBold: true,
+                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Card(
+                          elevation: 30,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          shadowColor: Colors.tealAccent,
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  "imgs/portfolio/webL.png",
+                                  height: 200,
+                                  width: 200,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Sans(
+                                  text: "Web Development",
+                                  size: 15,
+                                  isBold: true,
+                                ),
+                                Sans(
+                                  text:
+                                      "Pixel perfect designs for Web apps, responsive in all screen and performing properly around browsers.",
+                                  size: 13,
+                                  width: 200,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 30,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          shadowColor: Colors.tealAccent,
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  "imgs/portfolio/app.png",
+                                  height: 200,
+                                  width: 200,
+                                  fit: BoxFit.contain,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Sans(
+                                  text: "App Development",
+                                  size: 15,
+                                  isBold: true,
+                                ),
+                                Sans(
+                                  text:
+                                      "Great performance apps, working properly in all devices included Android, iOS and Huawei (EMUI).",
+                                  size: 13,
+                                  width: 200,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 30,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          shadowColor: Colors.tealAccent,
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  "imgs/portfolio/firebase.png",
+                                  height: 200,
+                                  width: 200,
+                                  fit: BoxFit.contain,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Sans(
+                                  text: "Back-end Development",
+                                  size: 15,
+                                  isBold: true,
+                                ),
+                                Sans(
+                                  text:
+                                      "Db for back-end, using the best practices. Use of NodeJS, MongoDB, Firebase and Supabase.",
+                                  size: 13,
+                                  width: 200,
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ])
+                ],
+              )),
         ],
       ),
     );
