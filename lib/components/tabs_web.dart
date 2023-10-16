@@ -28,14 +28,14 @@ class _TabWebState extends State<TabWeb> {
         duration: const Duration(milliseconds: 100),
         curve: Curves.easeInOutCubic,
         style: isSelected
-            ? GoogleFonts.oswald(
+            ? GoogleFonts.roboto(
                 fontSize: 25,
                 color: Colors.black,
                 decoration: TextDecoration.underline,
                 decorationThickness: 2,
                 decorationColor: Colors.tealAccent,
               )
-            : GoogleFonts.oswald(
+            : GoogleFonts.roboto(
                 fontSize: 23,
                 color: Colors.black,
               ),

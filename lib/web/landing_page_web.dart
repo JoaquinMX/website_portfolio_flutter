@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/components/custom_text_form.dart';
 import 'package:flutter_portfolio/components/sans.dart';
 import 'package:flutter_portfolio/components/service_card.dart';
 import 'package:flutter_portfolio/components/skill_capsule.dart';
@@ -197,39 +198,114 @@ class _LandingPageWebState extends State<LandingPageWeb> {
           ),
           // Third Section
           SizedBox(
-              height: heightDevice / 1.3,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Sans(
-                    text: "What I do",
-                    size: 40,
-                    isBold: true,
-                  ),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            height: heightDevice / 1.3,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Sans(
+                  text: "What I do",
+                  size: 40,
+                  isBold: true,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ServiceCard(
+                      imagePath: "imgs/portfolio/webL.png",
+                      title: "Web Development",
+                      text:
+                          "Pixel perfect designs for Web apps, responsive in all screen and performing properly around browsers.",
+                      reverse: true,
+                    ),
+                    ServiceCard(
+                      imagePath: "imgs/portfolio/app.png",
+                      title: "App Development",
+                      text:
+                          "Great performance apps, working properly in all devices included Android, iOS and Huawei (EMUI).",
+                      reverse: false,
+                    ),
+                    ServiceCard(
+                      imagePath: "imgs/portfolio/firebase.png",
+                      title: "Back-end Development",
+                      text:
+                          "DB for back-end, using the best practices. Use of NodeJS, MongoDB, Firebase and Supabase.",
+                      reverse: true,
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+          // Forth section
+          SizedBox(
+            height: heightDevice,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Sans(
+                  text: "Contact Me",
+                  size: 40,
+                  isBold: true,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
                       children: [
-                        ServiceCard(
-                          imagePath: "imgs/portfolio/webL.png",
-                          title: "Web Development",
-                          text:
-                              "Pixel perfect designs for Web apps, responsive in all screen and performing properly around browsers.",
+                        CustomTextForm(
+                          heading: "First Name",
+                          hintText: "Please enter your first name",
+                          width: 350,
                         ),
-                        ServiceCard(
-                          imagePath: "imgs/portfolio/app.png",
-                          title: "App Development",
-                          text:
-                              "Great performance apps, working properly in all devices included Android, iOS and Huawei (EMUI).",
+                        SizedBox(
+                          height: 15,
                         ),
-                        ServiceCard(
-                          imagePath: "imgs/portfolio/firebase.png",
-                          title: "Back-end Development",
-                          text:
-                              "DB for back-end, using the best practices. Use of NodeJS, MongoDB, Firebase and Supabase.",
-                        )
-                      ])
-                ],
-              )),
+                        CustomTextForm(
+                          heading: "Email",
+                          hintText: "Please enter your email",
+                          width: 350,
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        CustomTextForm(
+                          heading: "Last Name",
+                          hintText: "Please enter your last name",
+                          width: 350,
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        CustomTextForm(
+                          heading: "Phone Number",
+                          hintText: "Please enter your phone number",
+                          width: 350,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                CustomTextForm(
+                  heading: "Message",
+                  hintText: "Please enter your message",
+                  width: widthDevice / 1.5,
+                  maxLines: 10,
+                ),
+                MaterialButton(
+                  elevation: 20,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  height: 60,
+                  minWidth: 200,
+                  color: Colors.tealAccent,
+                  child: Sans(text: "Submit", size: 20, isBold: true),
+                  onPressed: () {},
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );
