@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/components/sans.dart';
+import 'package:flutter_portfolio/components/service_card.dart';
 import 'package:flutter_portfolio/components/skill_capsule.dart';
 import 'package:flutter_portfolio/components/tabs_web.dart';
 
@@ -208,109 +209,23 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Card(
-                          elevation: 30,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          shadowColor: Colors.tealAccent,
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  "imgs/portfolio/webL.png",
-                                  height: 200,
-                                  width: 200,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Sans(
-                                  text: "Web Development",
-                                  size: 15,
-                                  isBold: true,
-                                ),
-                                Sans(
-                                  text:
-                                      "Pixel perfect designs for Web apps, responsive in all screen and performing properly around browsers.",
-                                  size: 13,
-                                  width: 200,
-                                ),
-                              ],
-                            ),
-                          ),
+                        ServiceCard(
+                          imagePath: "imgs/portfolio/webL.png",
+                          title: "Web Development",
+                          text:
+                              "Pixel perfect designs for Web apps, responsive in all screen and performing properly around browsers.",
                         ),
-                        Card(
-                          elevation: 30,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          shadowColor: Colors.tealAccent,
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  "imgs/portfolio/app.png",
-                                  height: 200,
-                                  width: 200,
-                                  fit: BoxFit.contain,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Sans(
-                                  text: "App Development",
-                                  size: 15,
-                                  isBold: true,
-                                ),
-                                Sans(
-                                  text:
-                                      "Great performance apps, working properly in all devices included Android, iOS and Huawei (EMUI).",
-                                  size: 13,
-                                  width: 200,
-                                ),
-                              ],
-                            ),
-                          ),
+                        ServiceCard(
+                          imagePath: "imgs/portfolio/app.png",
+                          title: "App Development",
+                          text:
+                              "Great performance apps, working properly in all devices included Android, iOS and Huawei (EMUI).",
                         ),
-                        Card(
-                          elevation: 30,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          shadowColor: Colors.tealAccent,
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  "imgs/portfolio/firebase.png",
-                                  height: 200,
-                                  width: 200,
-                                  fit: BoxFit.contain,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Sans(
-                                  text: "Back-end Development",
-                                  size: 15,
-                                  isBold: true,
-                                ),
-                                Sans(
-                                  text:
-                                      "Db for back-end, using the best practices. Use of NodeJS, MongoDB, Firebase and Supabase.",
-                                  size: 13,
-                                  width: 200,
-                                ),
-                              ],
-                            ),
-                          ),
+                        ServiceCard(
+                          imagePath: "imgs/portfolio/firebase.png",
+                          title: "Back-end Development",
+                          text:
+                              "DB for back-end, using the best practices. Use of NodeJS, MongoDB, Firebase and Supabase.",
                         )
                       ])
                 ],
