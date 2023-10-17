@@ -4,12 +4,28 @@ import 'package:flutter_portfolio/components/sans.dart';
 import 'package:flutter_portfolio/components/service_card.dart';
 import 'package:flutter_portfolio/components/skill_capsule.dart';
 import 'package:flutter_portfolio/components/tabs_web.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LandingPageWeb extends StatefulWidget {
   const LandingPageWeb({super.key});
 
   @override
   State<LandingPageWeb> createState() => _LandingPageWebState();
+}
+
+Widget urlLauncher(String imgPath, String url) {
+  return IconButton(
+    icon: SvgPicture.asset(
+      imgPath,
+      width: 35,
+    ),
+    onPressed: () async {
+      await launchUrl(
+        Uri.parse(url),
+      );
+    },
+  );
 }
 
 class _LandingPageWebState extends State<LandingPageWeb> {
@@ -19,7 +35,47 @@ class _LandingPageWebState extends State<LandingPageWeb> {
     var widthDevice = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: const Drawer(),
+      drawer: Drawer(
+        backgroundColor: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 72,
+              backgroundColor: Colors.tealAccent,
+              child: CircleAvatar(
+                radius: 70,
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage("assets/imgs/profile_picture.jpg"),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Sans(text: "Joaquin Beltran", size: 30.0, isBold: true),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                urlLauncher(
+                  "assets/imgs/portfolio/instagram.svg",
+                  'https://www.instagram.com',
+                ),
+                urlLauncher(
+                  "assets/imgs/portfolio/twitter.svg",
+                  "https://twitter.com/joaquinmxdev",
+                ),
+                urlLauncher(
+                  "assets/imgs/portfolio/github.svg",
+                  "https://www.github.com/joaquinMX",
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -129,7 +185,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                       radius: 140,
                       backgroundColor: Colors.grey[50],
                       backgroundImage: const AssetImage(
-                        'imgs/profile_picture.jpg',
+                        'assets/imgs/profile_picture.jpg',
                       ),
                     ),
                   ),
@@ -145,7 +201,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
-                  "imgs/portfolio/web.jpg",
+                  "assets/imgs/portfolio/web.jpg",
                   width: widthDevice / 2.5,
                 ),
                 Column(
@@ -207,25 +263,25 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   size: 40,
                   isBold: true,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ServiceCard(
-                      imagePath: "imgs/portfolio/webL.png",
+                      imagePath: "assets/imgs/portfolio/webL.png",
                       title: "Web Development",
                       text:
                           "Pixel perfect designs for Web apps, responsive in all screen and performing properly around browsers.",
                       reverse: true,
                     ),
                     ServiceCard(
-                      imagePath: "imgs/portfolio/app.png",
+                      imagePath: "assets/imgs/portfolio/app.png",
                       title: "App Development",
                       text:
                           "Great performance apps, working properly in all devices included Android, iOS and Huawei (EMUI).",
                       reverse: false,
                     ),
                     ServiceCard(
-                      imagePath: "imgs/portfolio/firebase.png",
+                      imagePath: "assets/imgs/portfolio/firebase.png",
                       title: "Back-end Development",
                       text:
                           "DB for back-end, using the best practices. Use of NodeJS, MongoDB, Firebase and Supabase.",
@@ -257,7 +313,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                           hintText: "Please enter your first name",
                           width: 350,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         CustomTextForm(
@@ -274,7 +330,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                           hintText: "Please enter your last name",
                           width: 350,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         CustomTextForm(

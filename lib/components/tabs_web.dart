@@ -29,14 +29,14 @@ class _TabWebState extends State<TabWeb> {
         curve: Curves.easeInOutCubic,
         style: isSelected
             ? GoogleFonts.roboto(
-                fontSize: 25,
+                fontSize: 23,
                 color: Colors.black,
                 decoration: TextDecoration.underline,
                 decorationThickness: 2,
                 decorationColor: Colors.tealAccent,
               )
             : GoogleFonts.roboto(
-                fontSize: 23,
+                fontSize: 20,
                 color: Colors.black,
               ),
         child: Text(

@@ -23,12 +23,12 @@ class ServiceCard extends StatefulWidget {
 class _ServiceCardState extends State<ServiceCard>
     with TickerProviderStateMixin {
   late AnimationController _controller =
-      AnimationController(vsync: this, duration: Duration(seconds: 4))
+      AnimationController(vsync: this, duration: const Duration(seconds: 4))
         ..repeat(reverse: true);
 
   late Animation<Offset> _animation = Tween(
-    begin: widget.reverse ? Offset(0, 0.08) : Offset.zero,
-    end: widget.reverse ? Offset.zero : Offset(0, 0.08),
+    begin: widget.reverse ? const Offset(0, 0.08) : Offset.zero,
+    end: widget.reverse ? Offset.zero : const Offset(0, 0.08),
   ).animate(_controller);
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class _ServiceCardState extends State<ServiceCard>
         elevation: 30,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
-          side: BorderSide(
+          side: const BorderSide(
             color: Colors.tealAccent,
           ),
         ),
@@ -54,7 +54,7 @@ class _ServiceCardState extends State<ServiceCard>
                 width: 200,
                 fit: widget.fit,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Sans(
