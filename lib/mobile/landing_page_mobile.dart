@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/components/sans.dart';
+import 'package:flutter_portfolio/components/service_card.dart';
 import 'package:flutter_portfolio/components/skill_capsule.dart';
 import 'package:flutter_portfolio/components/tabs_mobile.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,6 +16,9 @@ class LandingPageMobile extends StatefulWidget {
 class _LandingPageMobileState extends State<LandingPageMobile> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
@@ -205,6 +209,46 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
           SizedBox(
             height: 60,
           ),
+          // Third Section
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Sans(text: "What I do", size: 35, isBold: true),
+              ServiceCard(
+                imagePath: "assets/imgs/portfolio/webL.png",
+                title: "Web Development",
+                text:
+                    "Pixel perfect designs for Web apps, responsive in all screen and performing properly around browsers.",
+                reverse: true,
+                width: width * 0.6,
+              ),
+              SizedBox(
+                height: 35,
+              ),
+              ServiceCard(
+                imagePath: "assets/imgs/portfolio/app.png",
+                title: "App Development",
+                text:
+                    "Great performance apps, working properly in all devices included Android, iOS and Huawei (EMUI).",
+                width: width * 0.6,
+                reverse: true,
+              ),
+              SizedBox(
+                height: 35,
+              ),
+              ServiceCard(
+                imagePath: "assets/imgs/portfolio/firebase.png",
+                title: "Back-end Development",
+                text:
+                    "DB for back-end, using the best practices. Use of NodeJS, MongoDB, Firebase and Supabase.",
+                width: width * 0.6,
+                reverse: true,
+              ),
+              SizedBox(
+                height: 35,
+              ),
+            ],
+          )
         ],
       ),
     );

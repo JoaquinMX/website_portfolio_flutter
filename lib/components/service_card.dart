@@ -7,6 +7,8 @@ class ServiceCard extends StatefulWidget {
   final String text;
   final fit;
   final reverse;
+  final double? width;
+  final double? height;
   const ServiceCard({
     super.key,
     required this.imagePath,
@@ -14,6 +16,8 @@ class ServiceCard extends StatefulWidget {
     required this.text,
     required this.reverse,
     this.fit,
+    this.width,
+    this.height,
   });
 
   @override
@@ -50,8 +54,8 @@ class _ServiceCardState extends State<ServiceCard>
             children: [
               Image.asset(
                 widget.imagePath,
-                height: 200,
-                width: 200,
+                height: widget.height ?? 200,
+                width: widget.width ?? 200,
                 fit: widget.fit,
               ),
               const SizedBox(
@@ -65,7 +69,7 @@ class _ServiceCardState extends State<ServiceCard>
               Sans(
                 text: widget.text,
                 size: 13,
-                width: 200,
+                width: widget.width ?? 200,
               ),
             ],
           ),
