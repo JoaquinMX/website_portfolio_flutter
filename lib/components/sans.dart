@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Sans extends StatelessWidget {
-  final text;
-  final size;
+  final String text;
+  final double size;
   final double? width;
   final bool isBold;
   Sans(
