@@ -5,13 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomTextForm extends StatelessWidget {
   final String heading;
   final String hintText;
-  final double width;
+  final double containerWidth;
   int? maxLines;
   CustomTextForm({
     super.key,
     required this.heading,
     required this.hintText,
-    required this.width,
+    required this.containerWidth,
     this.maxLines,
   });
 
@@ -27,7 +27,7 @@ class CustomTextForm extends StatelessWidget {
               height: 5,
             ),
             SizedBox(
-              width: width,
+              width: containerWidth,
               child: TextFormField(
                 maxLines: maxLines ?? 1,
                 decoration: InputDecoration(

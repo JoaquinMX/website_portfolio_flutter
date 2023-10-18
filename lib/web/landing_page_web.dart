@@ -88,15 +88,15 @@ class _LandingPageWebState extends State<LandingPageWeb> {
             Spacer(
               flex: 3,
             ),
-            TabWeb(title: 'Home'),
+            TabWeb(title: 'Home', route: '/'),
             Spacer(),
-            TabWeb(title: 'Works'),
+            TabWeb(title: 'Works', route: '/works'),
             Spacer(),
-            TabWeb(title: 'Blog'),
+            TabWeb(title: 'Blog', route: '/blog'),
             Spacer(),
-            TabWeb(title: 'About'),
+            TabWeb(title: 'About', route: '/about'),
             Spacer(),
-            TabWeb(title: 'Contact'),
+            TabWeb(title: 'Contact', route: '/contact'),
             Spacer(),
           ],
         ),
@@ -311,7 +311,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                         CustomTextForm(
                           heading: "First Name",
                           hintText: "Please enter your first name",
-                          width: 350,
+                          containerWidth: 350,
                         ),
                         const SizedBox(
                           height: 15,
@@ -319,7 +319,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                         CustomTextForm(
                           heading: "Email",
                           hintText: "Please enter your email",
-                          width: 350,
+                          containerWidth: 350,
                         ),
                       ],
                     ),
@@ -328,7 +328,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                         CustomTextForm(
                           heading: "Last Name",
                           hintText: "Please enter your last name",
-                          width: 350,
+                          containerWidth: 350,
                         ),
                         const SizedBox(
                           height: 15,
@@ -336,7 +336,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                         CustomTextForm(
                           heading: "Phone Number",
                           hintText: "Please enter your phone number",
-                          width: 350,
+                          containerWidth: 350,
                         ),
                       ],
                     ),
@@ -345,7 +345,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                 CustomTextForm(
                   heading: "Message",
                   hintText: "Please enter your message",
-                  width: widthDevice / 1.5,
+                  containerWidth: widthDevice / 1.5,
                   maxLines: 10,
                 ),
                 MaterialButton(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/components/custom_text_form.dart';
 import 'package:flutter_portfolio/components/sans.dart';
 import 'package:flutter_portfolio/components/service_card.dart';
 import 'package:flutter_portfolio/components/skill_capsule.dart';
@@ -25,7 +26,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           size: 35,
           color: Colors.black,
         ),
@@ -42,26 +43,26 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                 ),
                 child: Image.asset("assets/imgs/profile_picture_circle.png"),
               ),
-              padding: EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(bottom: 20),
             ),
-            TabsMobile(text: "Home", route: '/'),
-            SizedBox(
+            const TabsMobile(text: "Home", route: '/'),
+            const SizedBox(
               height: 20,
             ),
-            TabsMobile(text: "Work", route: "/works"),
-            SizedBox(
+            const TabsMobile(text: "Work", route: "/works"),
+            const SizedBox(
               height: 20,
             ),
-            TabsMobile(text: "Blog", route: "/blog"),
-            SizedBox(
+            const TabsMobile(text: "Blog", route: "/blog"),
+            const SizedBox(
               height: 20,
             ),
-            TabsMobile(text: "About", route: "/about"),
-            SizedBox(
+            const TabsMobile(text: "About", route: "/about"),
+            const SizedBox(
               height: 20,
             ),
-            TabsMobile(text: "Contact", route: "/contact"),
-            SizedBox(
+            const TabsMobile(text: "Contact", route: "/contact"),
+            const SizedBox(
               height: 40,
             ),
             Row(
@@ -75,11 +76,11 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
         children: [
           // First Section
           Padding(
-            padding: EdgeInsets.only(left: 20),
+            padding: const EdgeInsets.only(left: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 117,
                   backgroundColor: Colors.tealAccent,
                   child: CircleAvatar(
@@ -89,14 +90,14 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                         AssetImage("assets/imgs/profile_picture_circle.png"),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.tealAccent,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(
@@ -110,21 +111,21 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                           ),
                         ),
                       ),
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 20),
                       child: Sans(text: "Hello I'm", size: 15, isBold: true),
                     ),
                     Sans(text: "Joaquin Beltran", size: 40, isBold: true),
                     Sans(text: "Flutter Developer", size: 20),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Wrap(
+                    const Wrap(
                       direction: Axis.vertical,
                       spacing: 3,
                       children: [
@@ -139,7 +140,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 40,
                     ),
                     Wrap(
@@ -162,12 +163,12 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 90,
           ),
           // Second Section
           Padding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: 20,
             ),
             child: Column(
@@ -180,17 +181,17 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                   isBold: true,
                 ),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 50),
+                  margin: const EdgeInsets.symmetric(horizontal: 50),
                   child: Sans(
                     text:
                         "Hello! I'm Joaquin Beltran and I specialize in Flutter development, I strive to ensure astounding performance with state of the art security for Android, iOS, Web, Mac and Linux",
                     size: 15,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Wrap(
+                const Wrap(
                   spacing: 7.0,
                   runSpacing: 7.0,
                   children: [
@@ -206,7 +207,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 60,
           ),
           // Third Section
@@ -219,10 +220,10 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                 title: "Web Development",
                 text:
                     "Pixel perfect designs for Web apps, responsive in all screen and performing properly around browsers.",
-                reverse: true,
+                reverse: false,
                 width: width * 0.6,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 35,
               ),
               ServiceCard(
@@ -233,7 +234,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                 width: width * 0.6,
                 reverse: true,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 35,
               ),
               ServiceCard(
@@ -242,11 +243,60 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                 text:
                     "DB for back-end, using the best practices. Use of NodeJS, MongoDB, Firebase and Supabase.",
                 width: width * 0.6,
-                reverse: true,
+                reverse: false,
               ),
-              SizedBox(
-                height: 35,
+              const SizedBox(
+                height: 60,
               ),
+              // Fourth Section
+              Wrap(
+                spacing: 20.0,
+                runSpacing: 20.0,
+                alignment: WrapAlignment.center,
+                children: [
+                  Sans(text: "Contact Me", size: 35, isBold: true),
+                  CustomTextForm(
+                    heading: "First name",
+                    hintText: "Enter your first name",
+                    containerWidth: width / 1.4,
+                  ),
+                  CustomTextForm(
+                    heading: "Last name",
+                    hintText: "Enter your last name",
+                    containerWidth: width / 1.4,
+                  ),
+                  CustomTextForm(
+                    heading: "Email",
+                    hintText: "Enter your email",
+                    containerWidth: width / 1.4,
+                  ),
+                  CustomTextForm(
+                    heading: "Phone Number",
+                    hintText: "Enter your phone number",
+                    containerWidth: width / 1.4,
+                  ),
+                  CustomTextForm(
+                    heading: "Message",
+                    hintText: "Message",
+                    containerWidth: width / 1.4,
+                    maxLines: 10,
+                  ),
+                  MaterialButton(
+                    onPressed: () {},
+                    elevation: 20,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    height: 60,
+                    minWidth: width / 2.2,
+                    color: Colors.tealAccent,
+                    child: Sans(text: 'Submit', size: 20, isBold: true),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              )
             ],
           )
         ],
@@ -278,7 +328,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
             ),
         icon: SvgPicture.asset(
           imgPath,
-          theme: SvgTheme(
+          theme: const SvgTheme(
             currentColor: Colors.black,
           ),
           width: 35,
