@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio/components/custom_text_form.dart';
-import 'package:flutter_portfolio/components/sans.dart';
+import 'package:flutter_portfolio/components/contact_me.dart';
+import 'package:flutter_portfolio/components/custom_drawer.dart';
 import 'package:flutter_portfolio/components/service_card.dart';
 import 'package:flutter_portfolio/components/skill_capsule.dart';
-import 'package:flutter_portfolio/components/tabs_mobile.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+import '../components/sans.dart';
 
 class LandingPageMobile extends StatefulWidget {
   const LandingPageMobile({super.key});
@@ -31,47 +30,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
           color: Colors.black,
         ),
       ),
-      endDrawer: Drawer(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            DrawerHeader(
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(width: 2, color: Colors.black),
-                ),
-                child: Image.asset("assets/imgs/profile_picture_circle.png"),
-              ),
-              padding: const EdgeInsets.only(bottom: 20),
-            ),
-            const TabsMobile(text: "Home", route: '/'),
-            const SizedBox(
-              height: 20,
-            ),
-            const TabsMobile(text: "Work", route: "/works"),
-            const SizedBox(
-              height: 20,
-            ),
-            const TabsMobile(text: "Blog", route: "/blog"),
-            const SizedBox(
-              height: 20,
-            ),
-            const TabsMobile(text: "About", route: "/about"),
-            const SizedBox(
-              height: 20,
-            ),
-            const TabsMobile(text: "Contact", route: "/contact"),
-            const SizedBox(
-              height: 40,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: socialLinks(),
-            )
-          ],
-        ),
-      ),
+      endDrawer: CustomDrawerMobile(),
       body: ListView(
         children: [
           // First Section
@@ -191,7 +150,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                 const SizedBox(
                   height: 10,
                 ),
-                const Wrap(
+                Wrap(
                   spacing: 7.0,
                   runSpacing: 7.0,
                   children: [
@@ -249,51 +208,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                 height: 60,
               ),
               // Fourth Section
-              Wrap(
-                spacing: 20.0,
-                runSpacing: 20.0,
-                alignment: WrapAlignment.center,
-                children: [
-                  Sans(text: "Contact Me", size: 35, isBold: true),
-                  CustomTextForm(
-                    heading: "First name",
-                    hintText: "Enter your first name",
-                    containerWidth: width / 1.4,
-                  ),
-                  CustomTextForm(
-                    heading: "Last name",
-                    hintText: "Enter your last name",
-                    containerWidth: width / 1.4,
-                  ),
-                  CustomTextForm(
-                    heading: "Email",
-                    hintText: "Enter your email",
-                    containerWidth: width / 1.4,
-                  ),
-                  CustomTextForm(
-                    heading: "Phone Number",
-                    hintText: "Enter your phone number",
-                    containerWidth: width / 1.4,
-                  ),
-                  CustomTextForm(
-                    heading: "Message",
-                    hintText: "Message",
-                    containerWidth: width / 1.4,
-                    maxLines: 10,
-                  ),
-                  MaterialButton(
-                    onPressed: () {},
-                    elevation: 20,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    height: 60,
-                    minWidth: width / 2.2,
-                    color: Colors.tealAccent,
-                    child: Sans(text: 'Submit', size: 20, isBold: true),
-                  )
-                ],
-              ),
+              ContactMeMobile(width: width),
               const SizedBox(
                 height: 20,
               )
@@ -302,36 +217,5 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
         ],
       ),
     );
-  }
-
-  List<Widget> socialLinks() {
-    return [
-      socialButton(
-        "https://www.instagram.com",
-        "assets/imgs/portfolio/instagram.svg",
-      ),
-      socialButton(
-        "https://www.twitter.com",
-        "assets/imgs/portfolio/twitter.svg",
-      ),
-      socialButton(
-        "https://www.github.com/joaquinmx",
-        "assets/imgs/portfolio/github.svg",
-      ),
-    ];
-  }
-
-  Widget socialButton(String urlPath, String imgPath) {
-    return IconButton(
-        onPressed: () async => await launchUrl(
-              Uri(path: urlPath),
-            ),
-        icon: SvgPicture.asset(
-          imgPath,
-          theme: const SvgTheme(
-            currentColor: Colors.black,
-          ),
-          width: 35,
-        ));
   }
 }

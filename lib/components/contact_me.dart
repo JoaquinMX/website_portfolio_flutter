@@ -85,3 +85,61 @@ class ContactMeWeb extends StatelessWidget {
     );
   }
 }
+
+class ContactMeMobile extends StatelessWidget {
+  const ContactMeMobile({
+    super.key,
+    required this.width,
+  });
+
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      spacing: 20.0,
+      runSpacing: 20.0,
+      alignment: WrapAlignment.center,
+      children: [
+        Sans(text: "Contact Me", size: 35, isBold: true),
+        CustomTextForm(
+          heading: "First name",
+          hintText: "Enter your first name",
+          containerWidth: width / 1.4,
+        ),
+        CustomTextForm(
+          heading: "Last name",
+          hintText: "Enter your last name",
+          containerWidth: width / 1.4,
+        ),
+        CustomTextForm(
+          heading: "Email",
+          hintText: "Enter your email",
+          containerWidth: width / 1.4,
+        ),
+        CustomTextForm(
+          heading: "Phone Number",
+          hintText: "Enter your phone number",
+          containerWidth: width / 1.4,
+        ),
+        CustomTextForm(
+          heading: "Message",
+          hintText: "Message",
+          containerWidth: width / 1.4,
+          maxLines: 10,
+        ),
+        MaterialButton(
+          onPressed: () {},
+          elevation: 20,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          height: 60,
+          minWidth: width / 2.2,
+          color: Colors.tealAccent,
+          child: Sans(text: 'Submit', size: 20, isBold: true),
+        )
+      ],
+    );
+  }
+}
