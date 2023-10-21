@@ -1,31 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio/components/custom_text_form.dart';
+import 'package:flutter_portfolio/components/contact_me.dart';
+import 'package:flutter_portfolio/components/custom_appbar_title.dart';
+import 'package:flutter_portfolio/components/custom_drawer.dart';
 import 'package:flutter_portfolio/components/sans.dart';
 import 'package:flutter_portfolio/components/service_card.dart';
 import 'package:flutter_portfolio/components/skill_capsule.dart';
-import 'package:flutter_portfolio/components/tabs_web.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class LandingPageWeb extends StatefulWidget {
   const LandingPageWeb({super.key});
 
   @override
   State<LandingPageWeb> createState() => _LandingPageWebState();
-}
-
-Widget urlLauncher(String imgPath, String url) {
-  return IconButton(
-    icon: SvgPicture.asset(
-      imgPath,
-      width: 35,
-    ),
-    onPressed: () async {
-      await launchUrl(
-        Uri.parse(url),
-      );
-    },
-  );
 }
 
 class _LandingPageWebState extends State<LandingPageWeb> {
@@ -35,47 +20,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
     var widthDevice = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: Drawer(
-        backgroundColor: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 72,
-              backgroundColor: Colors.tealAccent,
-              child: CircleAvatar(
-                radius: 70,
-                backgroundColor: Colors.white,
-                backgroundImage: AssetImage("assets/imgs/profile_picture.jpg"),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Sans(text: "Joaquin Beltran", size: 30.0, isBold: true),
-            SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                urlLauncher(
-                  "assets/imgs/portfolio/instagram.svg",
-                  'https://www.instagram.com',
-                ),
-                urlLauncher(
-                  "assets/imgs/portfolio/twitter.svg",
-                  "https://twitter.com/joaquinmxdev",
-                ),
-                urlLauncher(
-                  "assets/imgs/portfolio/github.svg",
-                  "https://www.github.com/joaquinMX",
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+      drawer: const CustomDrawerWeb(),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -83,23 +28,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
           color: Colors.black,
           size: 25,
         ),
-        title: const Row(
-          children: [
-            Spacer(
-              flex: 3,
-            ),
-            TabWeb(title: 'Home', route: '/'),
-            Spacer(),
-            TabWeb(title: 'Works', route: '/works'),
-            Spacer(),
-            TabWeb(title: 'Blog', route: '/blog'),
-            Spacer(),
-            TabWeb(title: 'About', route: '/about'),
-            Spacer(),
-            TabWeb(title: 'Contact', route: '/contact'),
-            Spacer(),
-          ],
-        ),
+        title: const CustomAppBarTitleWeb(),
       ),
       body: ListView(
         children: [
@@ -293,75 +222,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
             ),
           ),
           // Forth section
-          SizedBox(
-            height: heightDevice,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Sans(
-                  text: "Contact Me",
-                  size: 40,
-                  isBold: true,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      children: [
-                        CustomTextForm(
-                          heading: "First Name",
-                          hintText: "Please enter your first name",
-                          containerWidth: 350,
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        CustomTextForm(
-                          heading: "Email",
-                          hintText: "Please enter your email",
-                          containerWidth: 350,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        CustomTextForm(
-                          heading: "Last Name",
-                          hintText: "Please enter your last name",
-                          containerWidth: 350,
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        CustomTextForm(
-                          heading: "Phone Number",
-                          hintText: "Please enter your phone number",
-                          containerWidth: 350,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                CustomTextForm(
-                  heading: "Message",
-                  hintText: "Please enter your message",
-                  containerWidth: widthDevice / 1.5,
-                  maxLines: 10,
-                ),
-                MaterialButton(
-                  elevation: 20,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  height: 60,
-                  minWidth: 200,
-                  color: Colors.tealAccent,
-                  child: Sans(text: "Submit", size: 20, isBold: true),
-                  onPressed: () {},
-                )
-              ],
-            ),
-          ),
+          ContactMeWeb(heightDevice: heightDevice, widthDevice: widthDevice)
         ],
       ),
     );
