@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/components/about_me_section.dart';
 import 'package:flutter_portfolio/components/contact_me.dart';
 import 'package:flutter_portfolio/components/custom_drawer.dart';
 import 'package:flutter_portfolio/components/service_card.dart';
-import 'package:flutter_portfolio/components/skill_capsule.dart';
+import 'package:flutter_portfolio/components/services_section.dart';
 
 import '../components/sans.dart';
 
@@ -30,25 +31,25 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
           color: Colors.black,
         ),
       ),
-      endDrawer: CustomDrawerMobile(),
+      endDrawer: const CustomDrawerMobile(),
       body: ListView(
         children: [
+          const CircleAvatar(
+            radius: 117,
+            backgroundColor: Colors.tealAccent,
+            child: CircleAvatar(
+              radius: 110,
+              backgroundColor: Colors.white,
+              backgroundImage:
+                  AssetImage("assets/imgs/profile_picture_circle.png"),
+            ),
+          ),
           // First Section
           Padding(
-            padding: const EdgeInsets.only(left: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CircleAvatar(
-                  radius: 117,
-                  backgroundColor: Colors.tealAccent,
-                  child: CircleAvatar(
-                    radius: 110,
-                    backgroundColor: Colors.white,
-                    backgroundImage:
-                        AssetImage("assets/imgs/profile_picture_circle.png"),
-                  ),
-                ),
                 const SizedBox(
                   height: 25,
                 ),
@@ -82,7 +83,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                   height: 15,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const Wrap(
                       direction: Axis.vertical,
@@ -126,96 +127,54 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
             height: 90,
           ),
           // Second Section
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 20,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Sans(
-                  text: "About Me",
-                  size: 35,
-                  isBold: true,
-                ),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 50),
-                  child: Sans(
-                    text:
-                        "Hello! I'm Joaquin Beltran and I specialize in Flutter development, I strive to ensure astounding performance with state of the art security for Android, iOS, Web, Mac and Linux",
-                    size: 15,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Wrap(
-                  spacing: 7.0,
-                  runSpacing: 7.0,
-                  children: [
-                    SkillCapsule(text: "Flutter"),
-                    SkillCapsule(text: "Firebase"),
-                    SkillCapsule(text: "Android"),
-                    SkillCapsule(text: "iOS"),
-                    SkillCapsule(text: "Web"),
-                    SkillCapsule(text: "Mac"),
-                    SkillCapsule(text: "Linux"),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          const AboutMeSectionMobile(),
           const SizedBox(
             height: 60,
           ),
           // Third Section
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Sans(text: "What I do", size: 35, isBold: true),
-              ServiceCard(
-                imagePath: "assets/imgs/portfolio/webL.png",
-                title: "Web Development",
-                text:
-                    "Pixel perfect designs for Web apps, responsive in all screen and performing properly around browsers.",
-                reverse: false,
-                width: width * 0.6,
-              ),
-              const SizedBox(
-                height: 35,
-              ),
-              ServiceCard(
-                imagePath: "assets/imgs/portfolio/app.png",
-                title: "App Development",
-                text:
-                    "Great performance apps, working properly in all devices included Android, iOS and Huawei (EMUI).",
-                width: width * 0.6,
-                reverse: true,
-              ),
-              const SizedBox(
-                height: 35,
-              ),
-              ServiceCard(
-                imagePath: "assets/imgs/portfolio/firebase.png",
-                title: "Back-end Development",
-                text:
-                    "DB for back-end, using the best practices. Use of NodeJS, MongoDB, Firebase and Supabase.",
-                width: width * 0.6,
-                reverse: false,
-              ),
-              const SizedBox(
-                height: 60,
-              ),
-              // Fourth Section
-              ContactMeMobile(width: width),
-              const SizedBox(
-                height: 20,
-              )
-            ],
+          ServicesSectionMobile(
+            width: width,
+            service1: service1(width),
+            service2: service2(width),
+            service3: service3(width),
+          ),
+          const SizedBox(
+            height: 60,
+          ),
+          // Fourth Section
+          ContactMeMobile(width: width),
+          const SizedBox(
+            height: 20,
           )
         ],
       ),
     );
   }
+
+  ServiceCard service1(width) => ServiceCard(
+        imagePath: "assets/imgs/portfolio/webL.png",
+        title: "Web Development",
+        text:
+            "Pixel perfect designs for Web apps, responsive in all screen and performing properly around browsers.",
+        reverse: false,
+        width: width * 0.6,
+      );
+
+  ServiceCard service2(width) => ServiceCard(
+        imagePath: "assets/imgs/portfolio/app.png",
+        title: "App Development",
+        text:
+            "Great performance apps, working properly in all devices included Android, iOS and Huawei (EMUI).",
+        width: width * 0.6,
+        reverse: true,
+      );
+
+  ServiceCard service3(width) => ServiceCard(
+        imagePath: "assets/imgs/portfolio/firebase.png",
+        title: "Back-end Development",
+        text:
+            "DB for back-end, using the best practices. Use of NodeJS, MongoDB, Firebase and Supabase.",
+        width: width * 0.6,
+        reverse: false,
+      );
 }

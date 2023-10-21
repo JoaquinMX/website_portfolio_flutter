@@ -3,8 +3,8 @@ import 'package:flutter_portfolio/components/sans.dart';
 
 class ServiceCard extends StatefulWidget {
   final String imagePath;
-  final String title;
-  final String text;
+  final String? title;
+  final String? text;
   final fit;
   final reverse;
   final double? width;
@@ -12,9 +12,9 @@ class ServiceCard extends StatefulWidget {
   const ServiceCard({
     super.key,
     required this.imagePath,
-    required this.title,
-    required this.text,
     required this.reverse,
+    this.title,
+    this.text,
     this.fit,
     this.width,
     this.height,
@@ -61,16 +61,20 @@ class _ServiceCardState extends State<ServiceCard>
               const SizedBox(
                 height: 10,
               ),
-              Sans(
-                text: widget.title,
-                size: 15,
-                isBold: true,
-              ),
-              Sans(
-                text: widget.text,
-                size: 13,
-                width: widget.width ?? 200,
-              ),
+              widget.title != null
+                  ? Sans(
+                      text: widget.title!,
+                      size: 15,
+                      isBold: true,
+                    )
+                  : const SizedBox(),
+              widget.text != null
+                  ? Sans(
+                      text: widget.text!,
+                      size: 13,
+                      width: widget.width ?? 200,
+                    )
+                  : const SizedBox(),
             ],
           ),
         ),

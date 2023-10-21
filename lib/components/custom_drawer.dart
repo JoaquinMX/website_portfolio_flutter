@@ -66,14 +66,17 @@ class CustomDrawerMobile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           DrawerHeader(
+            padding: const EdgeInsets.only(bottom: 20),
             child: Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(width: 2, color: Colors.black),
               ),
-              child: Image.asset("assets/imgs/profile_picture_circle.png"),
+              child: Image.asset(
+                "assets/imgs/profile_picture_circle.png",
+                filterQuality: FilterQuality.high,
+              ),
             ),
-            padding: const EdgeInsets.only(bottom: 20),
           ),
           const TabsMobile(text: "Home", route: '/'),
           const SizedBox(
