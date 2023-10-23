@@ -12,7 +12,7 @@ class ServiceCard extends StatefulWidget {
   const ServiceCard({
     super.key,
     required this.imagePath,
-    required this.reverse,
+    this.reverse = false,
     this.title,
     this.text,
     this.fit,
