@@ -48,3 +48,45 @@ class SingleShowcase extends StatelessWidget {
         children: flip ? buildShowcase.reversed.toList() : buildShowcase);
   }
 }
+
+class SingleShowcaseMobile extends StatelessWidget {
+  final double width;
+  final String title;
+  final String text;
+  final String imagePath;
+
+  const SingleShowcaseMobile(
+      {super.key,
+      required this.width,
+      required this.imagePath,
+      required this.title,
+      required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ServiceCard(
+          imagePath: imagePath,
+          fit: BoxFit.contain,
+          height: 150,
+          width: width * .8,
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        Sans(text: title, size: 20, isBold: true),
+        SizedBox(
+          height: 10,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Sans(
+            text: text,
+            size: 15,
+          ),
+        ),
+      ],
+    );
+  }
+}
