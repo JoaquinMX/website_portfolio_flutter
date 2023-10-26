@@ -3,10 +3,12 @@ import 'package:flutter_portfolio/mobile/about_mobile.dart';
 import 'package:flutter_portfolio/mobile/blog_mobile.dart';
 import 'package:flutter_portfolio/mobile/contact_mobile.dart';
 import 'package:flutter_portfolio/mobile/landing_page_mobile.dart';
+import 'package:flutter_portfolio/mobile/works_mobile.dart';
 import 'package:flutter_portfolio/web/about_web.dart';
 import 'package:flutter_portfolio/web/blog_web.dart';
 import 'package:flutter_portfolio/web/contact_web.dart';
 import 'package:flutter_portfolio/web/landing_page_web.dart';
+import 'package:flutter_portfolio/web/works_web.dart';
 
 class Routes {
   static Route<dynamic> generateRoutes(RouteSettings settings) {
@@ -49,6 +51,16 @@ class Routes {
               return const BlogWeb();
             }
             return const BlogMobile();
+          }),
+        );
+      case '/works':
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => LayoutBuilder(builder: (context, constraints) {
+            if (constraints.maxWidth > 768) {
+              return const WorksWeb();
+            }
+            return const WorksMobile();
           }),
         );
       default:
