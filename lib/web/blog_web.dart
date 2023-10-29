@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/components/abel_custom.dart';
 import 'package:flutter_portfolio/components/blog_post.dart';
@@ -17,9 +18,27 @@ class _BlogWebState extends State<BlogWeb> {
       child: Scaffold(
         endDrawer: CustomDrawerMobile(),
         body: NestedScrollView(
-          body: ListView(
-            children: [BlogPostWeb(), BlogPostWeb(), BlogPostWeb()],
-          ),
+          body: StreamBuilder<QuerySnapshot>(
+              stream:
+                  FirebaseFirestore.instance.collection("articles").snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                      itemCount: snapshot.data!.docs.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        DocumentSnapshot documentSnapshot =
+                            snapshot.data!.docs[index];
+                        return BlogPostWeb(
+                          title: documentSnapshot["title"],
+                          body: documentSnapshot["body"],
+                        );
+                      });
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              }),
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
