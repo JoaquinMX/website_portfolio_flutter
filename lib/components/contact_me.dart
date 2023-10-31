@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/components/add_data_firestore.dart';
 import 'package:flutter_portfolio/components/custom_text_form.dart';
 import 'package:flutter_portfolio/components/sans.dart';
+import 'package:logger/logger.dart';
 
-class ContactMeWeb extends StatelessWidget {
+class ContactMeWeb extends StatefulWidget {
   final double heightDevice;
   final double widthDevice;
 
@@ -13,74 +15,124 @@ class ContactMeWeb extends StatelessWidget {
   });
 
   @override
+  State<ContactMeWeb> createState() => _ContactMeWebState();
+}
+
+class _ContactMeWebState extends State<ContactMeWeb> {
+  var logger = Logger();
+  final TextEditingController _firstNameController =
+      TextEditingController(); // for first name
+  final TextEditingController _lastNameController =
+      TextEditingController(); // for last name
+  final TextEditingController _emailController =
+      TextEditingController(); // for email
+  final TextEditingController _phoneNumberController =
+      TextEditingController(); // for phone number
+  final TextEditingController _messageController =
+      TextEditingController(); // for message
+  final formKey = GlobalKey<FormState>();
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: heightDevice,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Sans(
-            text: "Contact Me",
-            size: 40,
-            isBold: true,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  CustomTextForm(
-                    heading: "First Name",
-                    hintText: "Please enter your first name",
-                    containerWidth: 350,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  CustomTextForm(
-                    heading: "Email",
-                    hintText: "Please enter your email",
-                    containerWidth: 350,
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  CustomTextForm(
-                    heading: "Last Name",
-                    hintText: "Please enter your last name",
-                    containerWidth: 350,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  CustomTextForm(
-                    heading: "Phone Number",
-                    hintText: "Please enter your phone number",
-                    containerWidth: 350,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          CustomTextForm(
-            heading: "Message",
-            hintText: "Please enter your message",
-            containerWidth: widthDevice / 1.5,
-            maxLines: 10,
-          ),
-          MaterialButton(
-            elevation: 20,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+      height: widget.heightDevice,
+      child: Form(
+        key: formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Sans(
+              text: "Contact Me",
+              size: 40,
+              isBold: true,
             ),
-            height: 60,
-            minWidth: 200,
-            color: Colors.tealAccent,
-            child: Sans(text: "Submit", size: 20, isBold: true),
-            onPressed: () {},
-          )
-        ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    CustomTextForm(
+                      heading: "First Name",
+                      hintText: "Please enter your first name",
+                      containerWidth: 350,
+                      controller: _firstNameController,
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
+                          return "Please enter your first name";
+                        }
+                      },
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    CustomTextForm(
+                      heading: "Email",
+                      hintText: "Please enter your email",
+                      containerWidth: 350,
+                      controller: _emailController,
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
+                          return "Please enter your first email";
+                        }
+                      },
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    CustomTextForm(
+                      heading: "Last Name",
+                      hintText: "Please enter your last name",
+                      containerWidth: 350,
+                      controller: _lastNameController,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    CustomTextForm(
+                      heading: "Phone Number",
+                      hintText: "Please enter your phone number",
+                      containerWidth: 350,
+                      controller: _phoneNumberController,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            CustomTextForm(
+              heading: "Message",
+              hintText: "Please enter your message",
+              containerWidth: widget.widthDevice / 1.5,
+              maxLines: 10,
+              controller: _messageController,
+              validator: (text) {
+                if (text == null || text.isEmpty) {
+                  return "Please enter your message";
+                }
+              },
+            ),
+            MaterialButton(
+              elevation: 20,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              height: 60,
+              minWidth: 200,
+              color: Colors.tealAccent,
+              child: Sans(text: "Submit", size: 20, isBold: true),
+              onPressed: () async {
+                final addData = new AddDataFirestore();
+                if (formKey.currentState!.validate()) {
+                  await addData.addResponse(
+                      _firstNameController.text,
+                      _lastNameController.text,
+                      _emailController.text,
+                      _phoneNumberController.text,
+                      _messageController.text);
+                }
+              },
+            )
+          ],
+        ),
       ),
     );
   }
@@ -96,6 +148,16 @@ class ContactMeMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _firstNameController =
+        TextEditingController(); // for first name
+    final TextEditingController _lastNameController =
+        TextEditingController(); // for last name
+    final TextEditingController _emailController =
+        TextEditingController(); // for email
+    final TextEditingController _phoneNumberController =
+        TextEditingController(); // for phone number
+    final TextEditingController _messageController =
+        TextEditingController(); // f
     return Wrap(
       spacing: 20.0,
       runSpacing: 20.0,
@@ -106,27 +168,32 @@ class ContactMeMobile extends StatelessWidget {
           heading: "First name",
           hintText: "Enter your first name",
           containerWidth: width / 1.4,
+          controller: _firstNameController,
         ),
         CustomTextForm(
           heading: "Last name",
           hintText: "Enter your last name",
           containerWidth: width / 1.4,
+          controller: _lastNameController,
         ),
         CustomTextForm(
           heading: "Email",
           hintText: "Enter your email",
           containerWidth: width / 1.4,
+          controller: _emailController,
         ),
         CustomTextForm(
           heading: "Phone Number",
           hintText: "Enter your phone number",
           containerWidth: width / 1.4,
+          controller: _phoneNumberController,
         ),
         CustomTextForm(
           heading: "Message",
           hintText: "Message",
           containerWidth: width / 1.4,
           maxLines: 10,
+          controller: _messageController,
         ),
         MaterialButton(
           onPressed: () {},

@@ -12,6 +12,7 @@ class BlogMobile extends StatefulWidget {
 }
 
 class _BlogMobileState extends State<BlogMobile> {
+  /*
   void article() async {
     await FirebaseFirestore.instance
         .collection("articles")
@@ -25,14 +26,21 @@ class _BlogMobileState extends State<BlogMobile> {
   }
 
   void streamArticle() async {
+    var logger = Logger();
     await for (var snapshot
         in FirebaseFirestore.instance.collection("articles").snapshots()) {
       for (var article in snapshot.docs.reversed) {
-        print(article.data()["title"]);
+        logger.d(article.data()["title"]);
       }
     }
   }
 
+  @override
+  void initState() {
+    streamArticle();
+    super.initState();
+  }
+*/
   @override
   Widget build(BuildContext context) {
     return SafeArea(

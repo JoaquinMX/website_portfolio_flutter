@@ -7,12 +7,17 @@ class CustomTextForm extends StatelessWidget {
   final String hintText;
   final double containerWidth;
   int? maxLines;
+  final TextEditingController controller;
+  final validator;
+
   CustomTextForm({
     super.key,
     required this.heading,
     required this.hintText,
     required this.containerWidth,
     this.maxLines,
+    required this.controller,
+    this.validator,
   });
 
   @override
@@ -29,14 +34,24 @@ class CustomTextForm extends StatelessWidget {
             SizedBox(
               width: containerWidth,
               child: TextFormField(
+                validator: validator,
+                controller: controller,
                 maxLines: maxLines ?? 1,
                 decoration: InputDecoration(
-                  focusedErrorBorder: const OutlineInputBorder(
+                  errorBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.red,
                     ),
                     borderRadius: BorderRadius.all(
                       Radius.circular(10.0),
+                    ),
+                  ),
+                  focusedErrorBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.red,
+                    ),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(15.0),
                     ),
                   ),
                   enabledBorder: const OutlineInputBorder(

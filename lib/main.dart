@@ -8,6 +8,7 @@ import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setPathUrlStrategy();
   await dotenv.load();
   if (kIsWeb) {
     await Firebase.initializeApp(
@@ -23,7 +24,6 @@ void main() async {
     await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform);
   }
-  setPathUrlStrategy();
   runApp(const MyApp());
 }
 
