@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_portfolio/firebase_options.dart';
 import 'package:flutter_portfolio/routes.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
@@ -21,6 +22,7 @@ void main() async {
             appId: dotenv.env['APP_ID_FIREBASE'] ?? "",
             measurementId: dotenv.env['MEASUREMENT_ID_FIREBASE'] ?? ""));
   } else {
+    GoogleFonts.config.allowRuntimeFetching = false;
     await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform);
   }

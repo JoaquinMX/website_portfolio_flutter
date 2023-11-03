@@ -123,14 +123,17 @@ class _ContactMeWebState extends State<ContactMeWeb> {
               onPressed: () async {
                 final addData = new AddDataFirestore();
                 if (formKey.currentState!.validate()) {
-                  await addData.addResponse(
+                  if (await addData.addResponse(
                       _firstNameController.text,
                       _lastNameController.text,
                       _emailController.text,
                       _phoneNumberController.text,
-                      _messageController.text);
-                  formKey.currentState!.reset();
-                  DialogError(context);
+                      _messageController.text)) {
+                    formKey.currentState!.reset();
+                    CustomDialog(context, "Message sent successfully");
+                  } else {
+                    CustomDialog(context, "Message failed to send");
+                  }
                 }
               },
             )
@@ -210,14 +213,17 @@ class _ContactMeMobileState extends State<ContactMeMobile> {
             onPressed: () async {
               final addData = new AddDataFirestore();
               if (formKey.currentState!.validate()) {
-                await addData.addResponse(
+                if (await addData.addResponse(
                     _firstNameController.text,
                     _lastNameController.text,
                     _emailController.text,
                     _phoneNumberController.text,
-                    _messageController.text);
-                formKey.currentState!.reset();
-                DialogError(context);
+                    _messageController.text)) {
+                  formKey.currentState!.reset();
+                  CustomDialog(context, "Message sent successfully");
+                } else {
+                  CustomDialog(context, "Message failed to send");
+                }
               }
             },
             elevation: 20,
