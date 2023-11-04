@@ -40,7 +40,12 @@ class _BlogPostHeaderState extends State<BlogPostHeader> {
 class BlogPostMobile extends StatefulWidget {
   final String title;
   final String body;
-  const BlogPostMobile({super.key, required this.title, required this.body});
+  final bool isMobile;
+  const BlogPostMobile(
+      {super.key,
+      required this.title,
+      required this.body,
+      required this.isMobile});
 
   @override
   State<BlogPostMobile> createState() => _BlogPostMobileState();
@@ -57,7 +62,9 @@ class _BlogPostMobileState extends State<BlogPostMobile> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
+      padding: widget.isMobile
+          ? EdgeInsets.only(left: 20, right: 20, top: 30)
+          : EdgeInsets.only(left: 70, right: 70, top: 40),
       child: Container(
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(

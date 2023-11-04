@@ -4,16 +4,17 @@ import 'package:flutter_portfolio/components/abel_custom.dart';
 import 'package:flutter_portfolio/components/blog_post.dart';
 import 'package:flutter_portfolio/components/custom_drawer.dart';
 
-class BlogWeb extends StatefulWidget {
-  const BlogWeb({super.key});
+class Blog extends StatefulWidget {
+  const Blog({super.key});
 
   @override
-  State<BlogWeb> createState() => _BlogWebState();
+  State<Blog> createState() => _BlogState();
 }
 
-class _BlogWebState extends State<BlogWeb> {
+class _BlogState extends State<Blog> {
   @override
   Widget build(BuildContext context) {
+    bool isMobile = MediaQuery.of(context).size.width < 768;
     return SafeArea(
       child: Scaffold(
         endDrawer: CustomDrawerMobile(),
@@ -28,9 +29,10 @@ class _BlogWebState extends State<BlogWeb> {
                       itemBuilder: (BuildContext context, int index) {
                         DocumentSnapshot documentSnapshot =
                             snapshot.data!.docs[index];
-                        return BlogPostWeb(
+                        return BlogPostMobile(
                           title: documentSnapshot["title"],
                           body: documentSnapshot["body"],
+                          isMobile: isMobile,
                         );
                       });
                 } else {
@@ -48,17 +50,18 @@ class _BlogWebState extends State<BlogWeb> {
                   color: Colors.black,
                 ),
                 flexibleSpace: FlexibleSpaceBar(
+                  centerTitle: isMobile,
                   title: Container(
                     decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     padding: EdgeInsets.symmetric(
-                      horizontal: 7,
+                      horizontal: isMobile ? 4 : 7,
                     ),
                     child: AbelCustom(
                       text: "Welcome to my blog",
-                      size: 30,
+                      size: isMobile ? 24 : 30,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -69,7 +72,7 @@ class _BlogWebState extends State<BlogWeb> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                expandedHeight: 500,
+                expandedHeight: isMobile ? 400 : 500,
               )
             ];
           },
