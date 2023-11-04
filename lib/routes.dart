@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/common/blog.dart';
 import 'package:flutter_portfolio/mobile/about_mobile.dart';
-import 'package:flutter_portfolio/mobile/blog_mobile.dart';
+import 'package:flutter_portfolio/mobile/contact_mobile.dart';
 import 'package:flutter_portfolio/mobile/landing_page_mobile.dart';
 import 'package:flutter_portfolio/mobile/works_mobile.dart';
 import 'package:flutter_portfolio/web/about_web.dart';
-import 'package:flutter_portfolio/web/blog_web.dart';
+import 'package:flutter_portfolio/web/contact_web.dart';
 import 'package:flutter_portfolio/web/landing_page_web.dart';
 import 'package:flutter_portfolio/web/works_web.dart';
 
@@ -23,7 +23,15 @@ class Routes {
           }),
         );
       case '/contact':
-        return MaterialPageRoute(settings: settings, builder: (_) => Blog());
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => LayoutBuilder(builder: (context, constraints) {
+            if (constraints.maxWidth > 768) {
+              return const ContactWeb();
+            }
+            return const ContactMobile();
+          }),
+        );
       case '/about':
         return MaterialPageRoute(
           settings: settings,
@@ -36,14 +44,7 @@ class Routes {
         );
       case '/blog':
         return MaterialPageRoute(
-          settings: settings,
-          builder: (_) => LayoutBuilder(builder: (context, constraints) {
-            if (constraints.maxWidth > 768) {
-              return const BlogWeb();
-            }
-            return const BlogMobile();
-          }),
-        );
+            settings: settings, builder: (_) => const Blog());
       case '/works':
         return MaterialPageRoute(
           settings: settings,
