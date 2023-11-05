@@ -2,6 +2,9 @@
 
 Portfolio designed to check Flutter capabilities
 
+## Pending tasks
+[ ] Refactor code to follow a design pattern
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
